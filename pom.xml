@@ -4,7 +4,7 @@
 
   <groupId>team</groupId>
   <artifactId>FixIt</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <packaging>jar</packaging>
 
   <name>FixIt</name>
@@ -12,11 +12,16 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.11</maven.compiler.source>
+    <maven.compiler.target>1.11</maven.compiler.target>
   </properties>
 
   <dependencies>
+      <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-controls</artifactId>
+        <version>12.0.2</version>
+    </dependency>
     <dependency>
     <groupId>org.apache.poi</groupId>
     <artifactId>poi-ooxml</artifactId>
@@ -25,13 +30,21 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+      <version>4.12</version>
     </dependency>
   </dependencies>
   
   <build>
   <plugins>
+  
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+            <release>10</release>
+        </configuration>
+    </plugin>
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
@@ -55,7 +68,7 @@
           <manifest>
             <addClasspath>true</addClasspath>
             <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>com.mainClass</mainClass>
+            <mainClass>team.FixIt.NewMain</mainClass>
           </manifest>
         </archive>
       </configuration>

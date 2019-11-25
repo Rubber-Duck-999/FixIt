@@ -29,24 +29,26 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
- 
-root 
-{ 
+
+root
+{
     display: block;
 }
 
-.root 
+.root
 {
-     -fx-background-image: url("../image/rsz_blurred.jpg");
+     -fx-background-image: url("../images/rsz_blurred.jpg");
 }
 
-.label 
+.label
 {
     -fx-font-size: 22px;
     -fx-font-weight: bold;
     -fx-text-fill: #8A8067;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); 
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
+
+
 
 #Title
 {
@@ -56,13 +58,13 @@ root
    -fx-fill: #000000;
    -fx-underline: true;
    -fx-border-width: 4px;
-   -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); 
+   -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
 #Text
 {
    /**-fx-background-color: rgba(0, 0, 0, 0);*/
-   -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 ); 
+   -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
    -fx-text-fill: white;
    -fx-border-width: 4px;
    -fx-text-box-border: red ;
@@ -74,17 +76,12 @@ root
     -fx-pref-width: 300;
 }
 
-#Output
-{
-    -fx-pref-width: 100;
-}
-
-#actiontarget 
+#actiontarget
 {
   -fx-fill: FIREBRICK;
   -fx-font-weight: bold;
   -fx-font-size: 22px;
-  -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );  
+  -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
 
 #MainMenuButton
@@ -99,11 +96,12 @@ root
     -fx-pref-height: 50;
 }
 
-#MainMenuButton:hover 
+#MainMenuButton:hover
 {
     -fx-background-color: linear-gradient(#8A8067, #869B9D);
 }
-.button 
+
+.button
 {
     -fx-text-fill: white;
     -fx-font-family: "Arial Narrow";
@@ -115,19 +113,19 @@ root
     -fx-pref-height: 75;
 }
 
-.button:hover 
+.button:hover
 {
     -fx-background-color: linear-gradient(#8A8067, #869B9D);
 }
 
 /** Size the combo-box button. */
-.combo-box 
+.combo-box
 {
     -fx-pref-width: 200;
 }
 
 /** Size the combo-box drop down list. */
-.combo-box-popup > .list-view 
+.combo-box-popup > .list-view
 {
     -fx-pref-width: 200;
 }

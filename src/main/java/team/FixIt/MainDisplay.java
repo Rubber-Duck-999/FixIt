@@ -16,7 +16,7 @@ import javafx.stage.*;
 import team.FixIt.GUI.set;
 
 
-public class MainDisplay 
+public class MainDisplay
 {
 
 	static boolean answer;
@@ -65,58 +65,58 @@ public class MainDisplay
 		grid.add(LogOutHB_Box, 1, 6);
 		LogOutBtn.setId("MainMenuButton");
 		/////////////////////////////////////////
-		CreateBtn.setOnAction(e -> 
+		CreateBtn.setOnAction(e ->
 		{
-			answer= false; 
-			try 
+			answer= false;
+			try
 			{
 				answer = createLogin(set);
 				if (answer)
 				{
 					mainWindow.close();
 				}
-			} 
-			catch (SQLException e1) 
+			}
+			catch (SQLException e1)
 			{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		});
-		ListBtn.setOnAction(e -> 
+		ListBtn.setOnAction(e ->
 		{
 			answer= false;
-			try 
+			try
 			{
 				answer = listPasswords(set);
 				if (answer)
 				{
 					mainWindow.close();
 				}
-			} 
+			}
 			catch (SQLException e1)
 			{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		});
-		DeleteBtn.setOnAction(e -> 
+		DeleteBtn.setOnAction(e ->
 		{
 			answer= false;
-			try 
+			try
 			{
 				answer = deletePasswords(set);
 				if (answer)
 				{
 					mainWindow.close();
 				}
-			} 
+			}
 			catch (SQLException e1)
 			{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		});
-		LogOutBtn.setOnAction(e -> 
+		LogOutBtn.setOnAction(e ->
 		{
 			mainWindow.close();
 		});
@@ -124,7 +124,7 @@ public class MainDisplay
 		layout.getChildren().addAll(MainMenuLabel, CreateBtn, ListBtn, DeleteBtn, LogOutBtn);
 		layout.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(layout, common.HEIGHT, common.WIDTH);
-		scene.getStylesheets().add(GUI.class.getResource("CSS/Login.css").toExternalForm());
+		scene.getStylesheets().add(GUI.class.getResource("/CSS/Login.css").toExternalForm());
 		mainWindow.getIcons().add(GUI.iconImage);
 		mainWindow.setScene(scene);
 		mainWindow.showAndWait();
@@ -147,7 +147,7 @@ public class MainDisplay
 			}
 			LOGGER.info("Label is empty = " + arrayNames[i]);
 			Btn[i].setText(arrayNames[i]);
-			hori.setMargin(Btn[i], new Insets(20, 20, 20, 20)); 
+			hori.setMargin(Btn[i], new Insets(20, 20, 20, 20));
 			hori.getChildren().addAll(Btn[i]);
 		}
 		tileButtons.getChildren().add(hori);
@@ -156,7 +156,7 @@ public class MainDisplay
 	}
 
 
-	private static boolean createLogin(set set) throws SQLException 
+	private static boolean createLogin(set set) throws SQLException
 	{
 		Stage mainWindow = new Stage();
 		mainWindow.initModality(Modality.APPLICATION_MODAL);
@@ -191,19 +191,19 @@ public class MainDisplay
 			}
 			anchorpane.setTopAnchor(Labels[i], top);
 			anchorpane.setLeftAnchor(Labels[i], left);
-			anchorpane.setRightAnchor(Labels[i], right); 
+			anchorpane.setRightAnchor(Labels[i], right);
 			LOGGER.info("Label " + Labels[i]);
-			top = top + 50; 
+			top = top + 50;
 		}
 		anchorpane.setTopAnchor(accountField, 50.0);
 		anchorpane.setLeftAnchor(accountField, 200.0);
 		anchorpane.setRightAnchor(accountField, 0.0);
 		anchorpane.setTopAnchor(usernameField, 100.0);
 		anchorpane.setLeftAnchor(usernameField, 200.0);
-		anchorpane.setRightAnchor(usernameField, 0.0);		
+		anchorpane.setRightAnchor(usernameField, 0.0);
 		anchorpane.setTopAnchor(passwordField, 150.0);
 		anchorpane.setLeftAnchor(passwordField, 200.0);
-		anchorpane.setRightAnchor(passwordField, 0.0);		
+		anchorpane.setRightAnchor(passwordField, 0.0);
 		anchorpane.setTopAnchor(repasswordField, 200.0);
 		anchorpane.setLeftAnchor(repasswordField, 200.0);
 		anchorpane.setRightAnchor(repasswordField, 0.0);
@@ -212,9 +212,9 @@ public class MainDisplay
 		anchorpane.setRightAnchor(text, 0.0);
 		anchorpane.getChildren().addAll(Labels[0],
 										accountField,
-										Labels[1], 
-										usernameField, 
-										Labels[2], 
+										Labels[1],
+										usernameField,
+										Labels[2],
 										passwordField,
 										Labels[3],
 										repasswordField,
@@ -226,7 +226,7 @@ public class MainDisplay
 		tileTitle.setPadding(new Insets(10, 10, 10, 10));
 		tileTitle.setPrefColumns(1);
 		HBox hbox = new HBox(20);
-		hbox.setMargin(SceneTitle, new Insets(10, 10, 10, 10)); 
+		hbox.setMargin(SceneTitle, new Insets(10, 10, 10, 10));
 		hbox.getChildren().addAll(SceneTitle);
 		tileTitle.getChildren().add(hbox);
 		tileTitle.setAlignment(Pos.CENTER);
@@ -242,13 +242,13 @@ public class MainDisplay
 		/////////////////////////////////////////
 		MySQL = set.MySQL;
 		/////////////////////////////////////////
-		Btn[0].setOnAction(e -> 
+		Btn[0].setOnAction(e ->
 		{
 			String accountString = accountField.getText();
 			String usernameString = usernameField.getText();
 			String passwordString = passwordField.getText();
 			String repasswordString = repasswordField.getText();
-			try 
+			try
 			{
 				boolean exists = false;
 				exists = MySQL.checkIfAccountExists("accounts", accountString);
@@ -283,31 +283,31 @@ public class MainDisplay
 					{
 						text.setText("Please enter a account");
 					}
-					else 
+					else
 					{
-						text.setText("Account Already Exists");					
+						text.setText("Account Already Exists");
 					}
 				}
-			} 
-			catch (SQLException e1) 
+			}
+			catch (SQLException e1)
 			{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		});
 		/////////////////////////////////////////
-		Btn[1].setOnAction(e -> 
+		Btn[1].setOnAction(e ->
 		{
-			answer = false; 
+			answer = false;
 			mainWindow.close();
 		});
-		Btn[2].setOnAction(e -> 
+		Btn[2].setOnAction(e ->
 		{
-			answer = true; 
+			answer = true;
 			mainWindow.close();
 		});
 		Scene mainScene = new Scene(border, common.HEIGHT, common.WIDTH);
-		mainScene.getStylesheets().add(GUI.class.getResource("CSS/Login.css").toExternalForm());
+		mainScene.getStylesheets().add(GUI.class.getResource("/CSS/Login.css").toExternalForm());
 		mainWindow.setScene(mainScene);
 		mainWindow.getIcons().add(GUI.iconImage);
 		mainWindow.showAndWait();
@@ -326,7 +326,7 @@ public class MainDisplay
 		tileTitle.setPadding(new Insets(10, 10, 10, 10));
 		tileTitle.setPrefColumns(1);
 		HBox hbox = new HBox(20);
-		hbox.setMargin(SceneTitle, new Insets(10, 10, 10, 10)); 
+		hbox.setMargin(SceneTitle, new Insets(10, 10, 10, 10));
 		hbox.getChildren().addAll(SceneTitle);
 		tileTitle.getChildren().add(hbox);
 		tileTitle.setAlignment(Pos.CENTER);
@@ -350,7 +350,7 @@ public class MainDisplay
 		}
 		anchorpane.setTopAnchor(accountComboBox, 50.0);
 		anchorpane.setLeftAnchor(accountComboBox, 200.0);
-		anchorpane.setRightAnchor(accountComboBox, 0.0);		
+		anchorpane.setRightAnchor(accountComboBox, 0.0);
 		/////////////////////////////////////////
 		Text username = new Text();
 		username.setId("Output");
@@ -362,7 +362,7 @@ public class MainDisplay
 		anchorpane.setRightAnchor(username, 200.0);
 		anchorpane.setTopAnchor(password, 200.0);
 		anchorpane.setLeftAnchor(password, 60.0);
-		anchorpane.setRightAnchor(password, 200.0);	
+		anchorpane.setRightAnchor(password, 200.0);
 		username.setId("actiontarget");
 		password.setId("actiontarget");
 		anchorpane.getChildren().addAll(account, accountComboBox, username, password);
@@ -376,35 +376,35 @@ public class MainDisplay
 		border.setLeft(anchorpane);
 		border.setBottom(tileButtons);
 		/////////////////////////////////////////
-		Btn[0].setOnAction(e -> 
+		Btn[0].setOnAction(e ->
 		{
 			System.out.print("Button List was pressed");
 			String thisAccount = accountComboBox.getValue();
-			try 
+			try
 			{
 				String usernameText = MySQL.getUsername("accounts", thisAccount);
 				username.setText(usernameText);
 				String passwordText = MySQL.getPassword("accounts", thisAccount);
 				password.setText(passwordText);
-			} 
-			catch (SQLException e1) 
+			}
+			catch (SQLException e1)
 			{
 				e1.printStackTrace();
 			}
 		});
 		/////////////////////////////////////////
-		Btn[1].setOnAction(e -> 
+		Btn[1].setOnAction(e ->
 		{
-			answer = false; 
+			answer = false;
 			mainWindow.close();
 		});
-		Btn[2].setOnAction(e -> 
+		Btn[2].setOnAction(e ->
 		{
-			answer = true; 
+			answer = true;
 			mainWindow.close();
 		});
 		Scene mainScene = new Scene(border, common.HEIGHT, common.WIDTH);
-		mainScene.getStylesheets().add(GUI.class.getResource("CSS/Login.css").toExternalForm());
+		mainScene.getStylesheets().add(GUI.class.getResource("/CSS/Login.css").toExternalForm());
 		mainWindow.setScene(mainScene);
 		mainWindow.getIcons().add(GUI.iconImage);
 		mainWindow.showAndWait();
@@ -423,7 +423,7 @@ public class MainDisplay
 		tileTitle.setPadding(new Insets(10, 10, 10, 10));
 		tileTitle.setPrefColumns(1);
 		HBox hbox = new HBox(20);
-		hbox.setMargin(SceneTitle, new Insets(10, 10, 10, 10)); 
+		hbox.setMargin(SceneTitle, new Insets(10, 10, 10, 10));
 		hbox.getChildren().addAll(SceneTitle);
 		tileTitle.getChildren().add(hbox);
 		tileTitle.setAlignment(Pos.CENTER);
@@ -447,7 +447,7 @@ public class MainDisplay
 		}
 		anchorpane.setTopAnchor(accountComboBox, 50.0);
 		anchorpane.setLeftAnchor(accountComboBox, 200.0);
-		anchorpane.setRightAnchor(accountComboBox, 0.0);		
+		anchorpane.setRightAnchor(accountComboBox, 0.0);
 		/////////////////////////////////////////
 		Text text = new Text();
 		text.setId("actiontarget");
@@ -456,7 +456,7 @@ public class MainDisplay
 		anchorpane.setRightAnchor(text, 0.0);
 		anchorpane.getChildren().addAll(account, accountComboBox, text);
 		/////////////////////////////////////////
-		String[] arrayNames = {"Delete", "Return to\nMain Menu", "Logout"}; 
+		String[] arrayNames = {"Delete", "Return to\nMain Menu", "Logout"};
 		Button[] Btn = new Button[3];
 		TilePane tileButtons = createTile(Btn, arrayNames);
 		/////////////////////////////////////////
@@ -465,12 +465,12 @@ public class MainDisplay
 		border.setLeft(anchorpane);
 		border.setBottom(tileButtons);
 		/////////////////////////////////////////
-		Btn[0].setOnAction(e -> 
+		Btn[0].setOnAction(e ->
 		{
 			String thisAccount = accountComboBox.getValue();
 			if(!thisAccount.equals(null))
 			{
-				try 
+				try
 				{
 					boolean deleted = MySQL.DeleteLogin(common.TABLE, thisAccount);
 					if (deleted)
@@ -481,28 +481,28 @@ public class MainDisplay
 					{
 						text.setText("The login was not removed");
 					}
-				} 
-				catch (SQLException e1) 
+				}
+				catch (SQLException e1)
 				{
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				//DeleteActionTarget.setText("Password Removed");
-			} 
+			}
 		});
 		/////////////////////////////////////////
-		Btn[1].setOnAction(e -> 
+		Btn[1].setOnAction(e ->
 		{
-			answer = false; 
+			answer = false;
 			mainWindow.close();
 		});
-		Btn[2].setOnAction(e -> 
+		Btn[2].setOnAction(e ->
 		{
-			answer = true; 
+			answer = true;
 			mainWindow.close();
 		});
 		Scene mainScene = new Scene(border, common.HEIGHT, common.WIDTH);
-		mainScene.getStylesheets().add(GUI.class.getResource("CSS/Login.css").toExternalForm());
+		mainScene.getStylesheets().add(GUI.class.getResource("/CSS/Login.css").toExternalForm());
 		mainWindow.setScene(mainScene);
 		mainWindow.getIcons().add(GUI.iconImage);
 		mainWindow.showAndWait();
